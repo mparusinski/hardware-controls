@@ -9,8 +9,8 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
       in
       pkgs.writeShellScriptBin "dpower" ''
-        CHOICE=$(printf '%s\n' "poweroff" "reboot" | ${pkgs.dmenu}/bin/dmenu -p ?)
-        echo systemctl "$CHOICE"
+        CHOICE=$(printf '%s\n' "poweroff" "reboot" "suspend" | ${pkgs.dmenu}/bin/dmenu -p ?)
+        systemctl "$CHOICE"
       '';
   };
 }
